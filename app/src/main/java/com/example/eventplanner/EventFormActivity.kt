@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 import java.text.DateFormat
 import java.util.*
 import com.google.android.gms.ads.AdRequest
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class EventFormActivity : AppCompatActivity() {
@@ -44,6 +45,11 @@ class EventFormActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.base_with_nav)
         setupBottomNavigation(this)
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val accent   = UserPreferences.getAccentColor(this)
+        bottomNav.itemIconTintList = ColorStateList.valueOf(accent)
+        bottomNav.itemTextColor   = ColorStateList.valueOf(accent)
 
         val container = findViewById<FrameLayout>(R.id.container)
         val formView = layoutInflater.inflate(R.layout.event_form, container, true)
@@ -156,7 +162,6 @@ class EventFormActivity : AppCompatActivity() {
                         Log.d("EventFormActivity", "Email URI: $emailUri")
 
                         // Launch chooser or toast if no email client
-                        //val chooser = Intent.createChooser(emailIntent, "Send invites via")
                         if (emailIntentSendTo.resolveActivity(packageManager) != null) {
                             startActivity(Intent.createChooser(emailIntentSendTo, "Send invites via"))
                         } else {

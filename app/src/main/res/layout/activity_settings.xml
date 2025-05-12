@@ -6,56 +6,74 @@
     android:orientation="vertical"
     android:padding="24dp">
 
-    <TextView
-        android:text="Theme"
-        android:textSize="18sp"
-        android:layout_marginTop="8dp"
-        android:layout_height="wrap_content"
-        android:textColor="?android:textColorPrimary"
-        android:layout_width="wrap_content"/>
-
-    <Switch
-        android:id="@+id/themeSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="?android:textColorPrimary"
-        android:text="Dark Mode" />
-
-    <TextView
-        android:text="Primary Color"
-        android:textSize="18sp"
-        android:textColor="?android:textColorPrimary"
-        android:layout_marginTop="16dp"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"/>
-
-    <RadioGroup
-        android:id="@+id/colorGroup"
+    <LinearLayout
+        android:id="@+id/themeSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/border">
 
-        <RadioButton
-            android:id="@+id/colorBlue"
+        <TextView
+            android:text="Theme"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:textColor="?android:textColorPrimary"
+            android:layout_width="wrap_content"/>
+
+        <Switch
+            android:id="@+id/themeSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="?android:textColorPrimary"
-            android:text="Blue" />
+            android:text="Dark Mode" />
+    </LinearLayout>
 
-        <RadioButton
-            android:id="@+id/colorGreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/colorSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/border">
+
+        <TextView
+            android:text="Primary Color"
+            android:textSize="18sp"
             android:textColor="?android:textColorPrimary"
-            android:text="Green" />
-
-        <RadioButton
-            android:id="@+id/colorRed"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
-            android:textColor="?android:textColorPrimary"
-            android:text="Red" />
-    </RadioGroup>
+            android:layout_width="wrap_content"/>
 
+        <RadioGroup
+            android:id="@+id/colorGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/colorBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?android:textColorPrimary"
+                android:text="Blue" />
+
+            <RadioButton
+                android:id="@+id/colorGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?android:textColorPrimary"
+                android:text="Green" />
+
+            <RadioButton
+                android:id="@+id/colorRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?android:textColorPrimary"
+                android:text="Red" />
+        </RadioGroup>
+    </LinearLayout>
 
 </LinearLayout>

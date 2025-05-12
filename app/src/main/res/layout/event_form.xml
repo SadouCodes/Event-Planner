@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:hint="Event Title"
             android:textColor="?android:textColorPrimary"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="?android:textColorPrimary"
             android:inputType="textCapWords"
             android:layout_marginBottom="12dp" />
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:hint="Description"
             android:textColor="?android:textColorPrimary"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="?android:textColorPrimary"
             android:inputType="textMultiLine"
             android:minLines="3"
             android:layout_marginBottom="12dp" />
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:hint="Location"
             android:textColor="?android:textColorPrimary"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="?android:textColorPrimary"
             android:inputType="textPostalAddress"
             android:layout_marginBottom="12dp" />
 
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:hint="Host Email"
             android:textColor="?android:textColorPrimary"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="?android:textColorPrimary"
             android:inputType="textEmailAddress"
             android:layout_marginBottom="12dp" />
 
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Guests (comma separated emails)"
-            android:backgroundTint="@color/blue"
+            android:backgroundTint="?android:textColorPrimary"
             android:textColor="?android:textColorPrimary"
             android:inputType="textEmailAddress"
             android:layout_marginBottom="12dp" />
@@ -77,6 +77,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Select date"
+            android:backgroundTint="?android:textColorPrimary"
             android:padding="12dp"
             android:background="?android:attr/editTextBackground"
             android:layout_marginBottom="12dp"/>
@@ -85,6 +86,7 @@
             android:id="@+id/tvTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="?android:textColorPrimary"
             android:hint="Select time"
             android:padding="12dp"
             android:background="?android:attr/editTextBackground"

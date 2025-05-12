@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -57,6 +58,11 @@ class EventDetailActivity : AppCompatActivity() {
         // Inflate detail layout
         val container = findViewById<FrameLayout>(R.id.container)
         layoutInflater.inflate(R.layout.activity_event_detail, container, true)
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val accent   = UserPreferences.getAccentColor(this)
+        bottomNav.itemIconTintList = ColorStateList.valueOf(accent)
+        bottomNav.itemTextColor   = ColorStateList.valueOf(accent)
 
         // Bind views
         tvTitle          = container.findViewById(R.id.tvEventTitle)
