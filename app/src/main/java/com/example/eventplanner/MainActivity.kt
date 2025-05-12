@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.base_with_nav)
+        FirebaseApp.initializeApp(this)
 
         val db = FirebaseFirestore.getInstance()
         Log.d("Firebase", "Firestore instance: $db")

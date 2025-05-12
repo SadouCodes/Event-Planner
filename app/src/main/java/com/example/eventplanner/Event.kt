@@ -5,8 +5,7 @@ data class Event(
     var title: String? = null,
     var description: String? = null,
     var location: String? = null,
-    var dateTime: Long = 0, // timestamp
+    var dateTime: Long = 0,
     var hostEmail: String? = null,
-    var guestEmails: List<String> = listOf(),
-    var comments: List<String> = listOf()
+    var guestEmails: List<String> = listOf()
 )

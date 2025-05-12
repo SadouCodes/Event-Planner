@@ -3,7 +3,6 @@ package com.example.eventplanner
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doAfterTextChanged
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -55,12 +54,21 @@ class EventFormActivity : AppCompatActivity() {
                     try {
                         EventRepository.addEvent(event)
                         runOnUiThread {
-                            Toast.makeText(this@EventFormActivity, "Event created!", Toast.LENGTH_SHORT).show()
-                            finish()
+                            Toast.makeText(
+                                this@EventFormActivity,
+                                "Event created!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            clearForm()
                         }
                     } catch (e: Exception) {
                         runOnUiThread {
-                            Toast.makeText(this@EventFormActivity, "Failed to create event: ${e.message}", Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                this@EventFormActivity,
+                                "Failed to create event: ${e.message}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            e.printStackTrace()
                         }
                     }
                 }
@@ -74,15 +82,26 @@ class EventFormActivity : AppCompatActivity() {
                 titleInput.error = "Title is required"
                 false
             }
+
             locInput.text.isNullOrBlank() -> {
                 locInput.error = "Location is required"
                 false
             }
+
             hostInput.text.isNullOrBlank() -> {
                 hostInput.error = "Host email is required"
                 false
             }
+
             else -> true
         }
+    }
+
+    private fun clearForm() {
+        titleInput.text.clear()
+        descInput.text.clear()
+        locInput.text.clear()
+        hostInput.text.clear()
+        guestsInput.text.clear()
     }
 }
