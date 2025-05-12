@@ -3,6 +3,7 @@ package com.example.eventplanner
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 
 object UserPreferences {
     private const val PREFS_NAME = "event_prefs"
@@ -35,4 +36,15 @@ object UserPreferences {
             else AppCompatDelegate.MODE_NIGHT_NO
         )
     }
+
+
+    fun getAccentColor(context: Context): Int {
+        return when (getPrimaryColor(context)) {
+            "green" -> ContextCompat.getColor(context, R.color.green)
+            "red"   -> ContextCompat.getColor(context, R.color.red)
+            else    -> ContextCompat.getColor(context, R.color.blue)
+        }
+    }
+
+
 }

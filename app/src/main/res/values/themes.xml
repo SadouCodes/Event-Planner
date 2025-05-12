@@ -11,4 +11,6 @@
     </style>
 
     <style name="Theme.EventPlanner" parent="Theme.EventPlanner.Light" />
+    <style name="Theme.EventPlanner.Dark"  parent="Theme.EventPlanner" />
+
 </resources>
