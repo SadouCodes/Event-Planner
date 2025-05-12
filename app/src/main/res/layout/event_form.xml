@@ -1,28 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="?android:attr/windowBackground">
 
-    <!-- Allows the user to create an event, doesnt look nice yet but will soon
-     I think the map feature should be added here-->
-
-    <EditText
-        android:id="@+id/event_name"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Event Name" />
+        android:gravity="center_horizontal">
 
-    <EditText
-        android:id="@+id/event_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Event Location" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create a New Event"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="?android:textColorPrimary"
+            android:layout_marginBottom="16dp" />
 
-    <Button
-        android:id="@+id/create_event_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Event" />
+        <EditText
+            android:id="@+id/inputTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Event Title"
+            android:textColor="?android:textColorPrimary"
+            android:backgroundTint="@color/blue"
+            android:inputType="textCapWords"
+            android:layout_marginBottom="12dp" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/inputDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:textColor="?android:textColorPrimary"
+            android:backgroundTint="@color/blue"
+            android:inputType="textMultiLine"
+            android:minLines="3"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/inputLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Location"
+            android:textColor="?android:textColorPrimary"
+            android:backgroundTint="@color/blue"
+            android:inputType="textPostalAddress"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/inputHostEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Host Email"
+            android:textColor="?android:textColorPrimary"
+            android:backgroundTint="@color/blue"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/inputGuests"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Guests (comma separated emails)"
+            android:backgroundTint="@color/blue"
+            android:textColor="?android:textColorPrimary"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/buttonSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post Event"
+            android:textColor="?android:textColorPrimary"
+            android:textColorHint="?android:textColorHint"
+            android:backgroundTint="@color/blue" android:textAllCaps="false" />
+    </LinearLayout>
+</ScrollView>
