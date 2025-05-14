@@ -8,6 +8,6 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         FirebaseApp.initializeApp(this)
-        MobileAds.initialize(this) { /* no-op callback */ }
+        MobileAds.initialize(this)
     }
 }

@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!-- 2. Event title -->
     <TextView
         android:id="@+id/tvEventTitle"
         android:layout_width="0dp"
@@ -18,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- 3. Event description -->
     <TextView
         android:id="@+id/tvEventDescription"
         android:layout_width="0dp"
@@ -29,7 +27,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
-    <!-- 4. Host email -->
     <TextView
         android:id="@+id/tvHostEmail"
         android:layout_width="0dp"
@@ -40,7 +37,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
-    <!-- 5. Date/time -->
     <TextView
         android:id="@+id/tvDateTime"
         android:layout_width="0dp"
@@ -51,7 +47,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="4dp"/>
 
-    <!-- 6. Location -->
     <TextView
         android:id="@+id/tvLocation"
         android:layout_width="0dp"
@@ -62,7 +57,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="4dp"/>
 
-    <!-- 7. Add to Calendar button -->
     <Button
         android:id="@+id/buttonAddToCalendar"
         android:layout_width="wrap_content"
@@ -73,7 +67,6 @@
         android:layout_marginTop="12dp"/>
 
 
-    <!-- 11. AdMob banner -->
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="0dp"

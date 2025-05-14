@@ -7,7 +7,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 fun setupBottomNavigation(currentActivity: AppCompatActivity) {
     val nav = currentActivity.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
-    // select the current tab without firing the listener
     nav.selectedItemId = when (currentActivity) {
         is MainActivity       -> R.id.nav_events
         is EventFormActivity  -> R.id.nav_create
@@ -15,7 +14,6 @@ fun setupBottomNavigation(currentActivity: AppCompatActivity) {
         else                  -> R.id.nav_events
     }
 
-    // click‐listener for user taps
     nav.setOnItemSelectedListener { item ->
         when (item.itemId) {
             R.id.nav_events -> {

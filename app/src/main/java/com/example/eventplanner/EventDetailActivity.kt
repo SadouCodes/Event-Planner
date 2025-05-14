@@ -30,7 +30,6 @@ class EventDetailActivity : AppCompatActivity() {
     private lateinit var currentEvent: Event
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Apply saved dark/light mode
         setTheme(
             if (UserPreferences.getThemeMode(this))
                 R.style.Theme_EventPlanner_Dark
@@ -55,7 +54,6 @@ class EventDetailActivity : AppCompatActivity() {
         setContentView(R.layout.base_with_nav)
         setupBottomNavigation(this)
 
-        // Inflate detail layout
         val container = findViewById<FrameLayout>(R.id.container)
         layoutInflater.inflate(R.layout.activity_event_detail, container, true)
 
@@ -64,7 +62,6 @@ class EventDetailActivity : AppCompatActivity() {
         bottomNav.itemIconTintList = ColorStateList.valueOf(accent)
         bottomNav.itemTextColor   = ColorStateList.valueOf(accent)
 
-        // Bind views
         tvTitle          = container.findViewById(R.id.tvEventTitle)
         tvDescription    = container.findViewById(R.id.tvEventDescription)
         tvHost           = container.findViewById(R.id.tvHostEmail)
@@ -76,7 +73,6 @@ class EventDetailActivity : AppCompatActivity() {
             ColorStateList.valueOf(UserPreferences.getAccentColor(this))
 
 
-        // Fetch the Event by ID
         val eventId = intent.getStringExtra("EVENT_ID") ?: return
         lifecycleScope.launch {
             try {
@@ -97,7 +93,6 @@ class EventDetailActivity : AppCompatActivity() {
     }
 
     private fun populateFields(event: Event) {
-        // Display event data
         tvTitle.text       = event.title
         tvDescription.text = event.description
         tvHost.text        = "Host: ${event.hostEmail}"
@@ -105,7 +100,6 @@ class EventDetailActivity : AppCompatActivity() {
         tvDateTime.text    = "Date & Time: ${df.format(Date(event.dateTime))}"
         tvLocation.text    = "Location: ${event.location}"
 
-        // Calendar Intent
         btnAddToCalendar.setOnClickListener {
             val calIntent = Intent(Intent.ACTION_INSERT).apply {
                 data = CalendarContract.Events.CONTENT_URI

@@ -30,11 +30,9 @@ class EventFormActivity : AppCompatActivity() {
     private lateinit var tvTime: TextView
     private lateinit var submitButton: Button
 
-    // holds the combined date+time chosen by the user
     private var selectedDateTime: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Apply saved theme
         setTheme(
             if (UserPreferences.getThemeMode(this))
                 R.style.Theme_EventPlanner_Dark
@@ -56,11 +54,9 @@ class EventFormActivity : AppCompatActivity() {
 
         val adView = formView.findViewById<AdView>(R.id.adView)
 
-        // 2) Build & load a test AdRequest
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
 
-        // Bind inputs
         titleInput   = formView.findViewById(R.id.inputTitle)
         descInput    = formView.findViewById(R.id.inputDescription)
         locInput     = formView.findViewById(R.id.inputLocation)
@@ -73,7 +69,6 @@ class EventFormActivity : AppCompatActivity() {
         submitButton.backgroundTintList =
             ColorStateList.valueOf(UserPreferences.getAccentColor(this))
 
-        // Date picker
         tvDate.setOnClickListener {
             val cal = Calendar.getInstance()
             DatePickerDialog(
@@ -89,7 +84,6 @@ class EventFormActivity : AppCompatActivity() {
             ).show()
         }
 
-        // Time picker
         tvTime.setOnClickListener {
             val cal = Calendar.getInstance()
             selectedDateTime?.let { cal.timeInMillis = it }
@@ -109,7 +103,6 @@ class EventFormActivity : AppCompatActivity() {
             ).show()
         }
 
-        // Submit button
         submitButton.setOnClickListener {
             if (!validateForm()) return@setOnClickListener
 
@@ -135,7 +128,6 @@ class EventFormActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        // Build email invite
                         val df      = DateFormat.getDateTimeInstance()
                         val subject = "You're invited: ${event.title}"
                         val body    = """
@@ -149,7 +141,6 @@ class EventFormActivity : AppCompatActivity() {
                             Details: ${event.description}
                         """.trimIndent()
 
-                        // Put recipient addresses directly into the mailto URI
                         val addresses = event.guestEmails.joinToString(",")
                         val emailUri  = Uri.parse("mailto:$addresses")
 
@@ -158,14 +149,11 @@ class EventFormActivity : AppCompatActivity() {
                             putExtra(Intent.EXTRA_TEXT, body)
                         }
 
-                        // Log for debugging
                         Log.d("EventFormActivity", "Email URI: $emailUri")
 
-                        // Launch chooser or toast if no email client
                         if (emailIntentSendTo.resolveActivity(packageManager) != null) {
                             startActivity(Intent.createChooser(emailIntentSendTo, "Send invites via"))
                         } else {
-                            // Fallback to SEND + RFC822
                             val fallback = Intent(Intent.ACTION_SEND).apply {
                                 type = "message/rfc822"
                                 putExtra(Intent.EXTRA_EMAIL, event.guestEmails.toTypedArray())

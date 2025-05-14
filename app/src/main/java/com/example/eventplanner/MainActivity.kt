@@ -1,5 +1,7 @@
 package com.example.eventplanner
 
+// Sadou Sow (50%) & Karan Agarwal (50%)
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -40,7 +42,6 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = container.findViewById<RecyclerView>(R.id.recyclerViewEvents)
         val adapter = EventAdapter(emptyList()) { event ->
-            // On click, open detail screen
             val intent = Intent(this, EventDetailActivity::class.java)
             intent.putExtra("EVENT_ID", event.id)
             startActivity(intent)
@@ -48,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        // 3) Listen for real-time updates from Firestore
         FirebaseFirestore.getInstance()
             .collection("events")
             .addSnapshotListener { snap, err ->
@@ -56,17 +56,12 @@ class MainActivity : AppCompatActivity() {
 
                 val list = snap.documents.mapNotNull { doc ->
                     doc.toObject(Event::class.java)
-                        // stash the Firestore ID onto the Event
                         ?.apply { id = doc.id }
                 }
-
-                // DEBUG: verify IDs are coming through
-              //  list.forEach { Log.d("MainActivity", "Loaded event ${it.title} with id=${it.id}") }
 
                 adapter.update(list)
             }
 
-        // 4) Finally, wire up bottom navigation
         setupBottomNavigation(this)
     }
 }
